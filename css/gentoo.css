@@ -1,0 +1,16 @@
+* {
+    font-size: 20px;
+    background-color: bisque;
+    text-align: center;
+}
+
+.borderlands {
+    border-left: 10px;
+    border-right: 10px;
+    margin-left: 500px;
+    margin-right: 500px;
+}
+.disclaimer {
+    font-weight: 500;
+    font-size: 15px;
+}
