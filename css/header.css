@@ -24,7 +24,7 @@
     width: 100%;
     z-index: 1;
     top: 0;
-    background: rgba(196, 196, 196, 0.11);
+    background: rgba(153, 153, 153, 0.11);
     backdrop-filter: blur(10px);
     position: fixed ;
 }
@@ -48,14 +48,14 @@
 }
 
 .header_content:hover{
-    color: rgb(255, 255, 255);
+    color: rgb(146, 141, 146);
     transition: 300ms linear;
 }
 
 .header_content::after{
     content: "";
     display: block;
-    border-bottom: 2px solid white;
+    border-bottom: 2px solid rgb(146, 141, 146);
     margin-top: 5px;
     transform: scaleX(0);
     transition: transform 0.3s ease;
