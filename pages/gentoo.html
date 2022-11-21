@@ -1,20 +1,120 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="../css/gentoo.css">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="../css/gentoo.css" />
     <title>Gentoo Tutorial</title>
-</head>
-<body> 
-  <div class="borderlands">
-    <p class="disclaimer">Disclaimer: This is not an official guide to installing Gentoo. This is a short guide made for those who want a quick install and have knowledge about how Gentoo works.</p>
-    <h1>Introduction</h1>
-    <p class="has-inline">This is a guide <em>I would use</em> to installing Gentoo with systemd + <a href="https://www.freedesktop.org/wiki/Software/systemd/TheCaseForTheUsrMerge/"> merged-usr</a> as the init system of choice to the amd64 architecture.</p>
-    <p>If you stumbled upon this and you really want support and precise help, you should probably join Gentoo's IRC channel or Discord</p>
-    <h2>Part One: Partitioning.</h2>
-    <p>If you're not a complete</p>
-  </div>
-</body>
+  </head>
+  <body>
+    <div class="container">
+      <p class="disclaimer">Disclaimer: This is not an official guide to installing Gentoo. This is a short guide made for those who want a quick install and have knowledge about how Gentoo works.</p>
+      <h1>Introduction</h1>
+      <p>
+        This is a guide <em>I would use</em> to installing Gentoo with systemd +
+        <a href="https://www.freedesktop.org/wiki/Software/systemd/TheCaseForTheUsrMerge/">merged-usr</a>
+        as the init system of choice to the amd64 architecture (uefi).
+      </p>
+      <p>If you stumbled upon this and you really want support and precise help, you should probably join Gentoo's IRC channel or Discord</p>
+      <h2 id="partitioning">Chapter One: Partitioning.</h2>
+      <p>If you're not a complete beginner to linux, you should know how to partition your drives, so I'll make it quick.</p>
+      <p>I will be using btrfs for this guide, feel free to use whatever you feel like.</p>
+      <div class="cmd-box">
+        <span>#</span>
+        <code>parted -a optimal /dev/sdX</code>
+      </div>
+      <p>Where X is the letter of your drive.</p>
+      <div class="cmd-box">
+        <div>
+          <span>#</span>
+          <code>mklabel gpt</code>
+        </div>
+        <div>
+          <span>#</span>
+          <code>mkpart esp fat32 0% 513</code>
+        </div>
+        <div>
+          <span>#</span>
+          <code>mkpart swap linux-swap 513 16896</code>
+        </div>
+        <div>
+          <span>#</span>
+          <code>mkpart rootfs btrfs 16896 100%</code>
+        </div>
+      </div>
+      <p>Now that we are done with making the partitions, we just need to create the filesystems.</p>
+      <div class="cmd-box">
+        <div>
+          <span>#</span>
+          <code>mkfs.fat -F32 /dev/sdX1</code>
+        </div>
+        <div>
+          <span>#</span>
+          <code>mkswap /dev/sdX2</code>
+        </div>
+        <div>
+          <span>#</span>
+          <code>mkfs.btrfs /dev/sdX3</code>
+        </div>
+      </div>
+      <p>
+        Now we mount the filesystem to the recommended mount point as per the
+        <a href="https://wiki.gentoo.org/wiki/Handbook:AMD64/Installation/Disks#Mounting_the_root_partition">handbook</a>
+      </p>
+      <div class="cmd-box">
+        <div>
+          <span>#</span>
+          <code>mount /dev/sdX3 /mnt/gentoo</code>
+        </div>
+      </div>
+      <p>You can, of course, change the mountpoint to whatever you're like. I'm only doing this for:</p>
+      <ul>
+        <li>Consistency's sake</li>
+        <li>Easier to copy commands from the handbook</li>
+      </ul>
+      <p>Now I'll create the subvolumes for the btrfs drive.</p>
+      <div class="cmd-box">
+        <div>
+          <span>#</span>
+          <code>btrfs su cr /mnt/gentoo/@</code>
+        </div>
+        <div>
+          <span>#</span>
+          <code>btrfs su cr /mnt/gentoo/@home</code>
+        </div>
+        <div>
+          <span>#</span>
+          <code>btrfs su cr /mnt/gentoo/@.snapshots</code>
+        </div>
+      </div>
+      <p>The only things left are unmounting the drive, and then mounting on the appropriate subvolumes.</p>
+      <div class="cmd-box">
+        <div>
+          <span>#</span>
+          <code>umount /mnt/gentoo</code>
+        </div>
+        <div>
+          <span>#</span>
+          <code>mount -o subvol=@ /dev/sdX3 /mnt/gentoo</code>
+        </div>
+        <div>
+          <span>#</span>
+          <code>mkdir /mnt/gentoo/{home,efi,.snapshots}</code>
+        </div>
+        <div>
+          <span>#</span>
+          <code>mount -o compress=zstd,subvol=@home /dev/sdX3 /mnt/gentoo/home</code>
+        </div>
+        <div>
+          <span>#</span>
+          <code>mount -o compress=zstd,subvol=@.snapshots /dev/sdX3 /mnt/gentoo/.snapshots</code>
+        </div>
+        <div>
+          <span>#</span>
+          <code>mount /dev/sdX1 /mnt/gentoo/efi</code>
+        </div>
+      </div>
+    </div>
+  </body>
 </html>
