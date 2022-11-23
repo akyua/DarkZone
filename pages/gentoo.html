@@ -12,178 +12,183 @@
             <p class="disclaimer">Disclaimer: This is not an official guide to installing Gentoo. This is a short guide made for those who want a quick install and have knowledge about how Gentoo works.</p>
             <h1>Introduction</h1>
             <p>
-                This is a guide <em>I would use</em> to installing Gentoo with systemd +
-                <a href="https://www.freedesktop.org/wiki/Software/systemd/TheCaseForTheUsrMerge/">merged-usr</a>
+                This is a guide <em>I would use</em> for installing Gentoo with systemd
+                <a href="https://www.freedesktop.org/wiki/Software/systemd/TheCaseForTheUsrMerge/">(merged-usr)</a>
                 as the init system of choice to the amd64 architecture (uefi).
             </p>
-            <p>If you stumbled upon this and you really want support and precise help, you should probably join Gentoo's IRC channel or Discord</p>
-            <h2 id="partitioning">Chapter One: Partitioning.</h2>
-            <p>If you're not a complete beginner to linux, you should know how to partition your drives, so I'll make it quick.</p>
-            <p>I will be using btrfs for this guide, feel free to use whatever you feel like.</p>
-            <div class="cmd-box">
-                <span>#</span>
-                <code>parted -a optimal /dev/sdX</code>
-            </div>
-            <p>Where X is the letter of your drive.</p>
-            <div class="cmd-box">
-                <div>
+            <p>If you've stumbled upon this and you really want support and precise help, you should probably join Gentoo's IRC channel or Discord</p>
+
+            <div id="partitioning">
+                <h2 class="title">Chapter One: Partitioning.</h2>
+                <p>If you're not a complete beginner to linux, you should know how to partition your drives, so I'll make it quick.</p>
+                <p>I will be using btrfs for this guide, feel free to use whatever you feel like.</p>
+                <div class="cmd-box">
                     <span>#</span>
-                    <code>mklabel gpt</code>
+                    <code>parted -a optimal /dev/sdX</code>
                 </div>
-                <div>
-                    <span>#</span>
-                    <code>mkpart esp fat32 0% 513</code>
+                <p>Where X is the letter of your drive.</p>
+                <div class="cmd-box">
+                    <div>
+                        <span>#</span>
+                        <code>mklabel gpt</code>
+                    </div>
+                    <div>
+                        <span>#</span>
+                        <code>mkpart esp fat32 0% 513</code>
+                    </div>
+                    <div>
+                        <span>#</span>
+                        <code>mkpart swap linux-swap 513 16896</code>
+                    </div>
+                    <div>
+                        <span>#</span>
+                        <code>mkpart rootfs btrfs 16896 100%</code>
+                    </div>
                 </div>
-                <div>
-                    <span>#</span>
-                    <code>mkpart swap linux-swap 513 16896</code>
+                <p>Now that we are done with making the partitions, we just need to create the filesystems.</p>
+                <div class="cmd-box">
+                    <div>
+                        <span>#</span>
+                        <code>mkfs.fat -F32 /dev/sdX1</code>
+                    </div>
+                    <div>
+                        <span>#</span>
+                        <code>mkswap /dev/sdX2</code>
+                    </div>
+                    <div>
+                        <span>#</span>
+                        <code>mkfs.btrfs /dev/sdX3</code>
+                    </div>
                 </div>
-                <div>
-                    <span>#</span>
-                    <code>mkpart rootfs btrfs 16896 100%</code>
+                <p>
+                    Now we mount the filesystem to the recommended mount point as per the
+                    <a href="https://wiki.gentoo.org/wiki/Handbook:AMD64/Installation/Disks#Mounting_the_root_partition">handbook</a>
+                </p>
+                <div class="cmd-box">
+                    <div>
+                        <span>#</span>
+                        <code>mount /dev/sdX3 /mnt/gentoo</code>
+                    </div>
                 </div>
-            </div>
-            <p>Now that we are done with making the partitions, we just need to create the filesystems.</p>
-            <div class="cmd-box">
-                <div>
-                    <span>#</span>
-                    <code>mkfs.fat -F32 /dev/sdX1</code>
+                <p>You can, of course, change the mountpoint to whatever you like. I'm only doing this for:</p>
+                <ul>
+                    <li>Consistency's sake</li>
+                    <li>Easier to copy commands from the handbook</li>
+                </ul>
+                <p>Now I'll create the subvolumes for the btrfs drive.</p>
+                <div class="cmd-box">
+                    <div>
+                        <span>#</span>
+                        <code>btrfs su cr /mnt/gentoo/@</code>
+                    </div>
+                    <div>
+                        <span>#</span>
+                        <code>btrfs su cr /mnt/gentoo/@home</code>
+                    </div>
+                    <div>
+                        <span>#</span>
+                        <code>btrfs su cr /mnt/gentoo/@.snapshots</code>
+                    </div>
                 </div>
-                <div>
-                    <span>#</span>
-                    <code>mkswap /dev/sdX2</code>
-                </div>
-                <div>
-                    <span>#</span>
-                    <code>mkfs.btrfs /dev/sdX3</code>
-                </div>
-            </div>
-            <p>
-                Now we mount the filesystem to the recommended mount point as per the
-                <a href="https://wiki.gentoo.org/wiki/Handbook:AMD64/Installation/Disks#Mounting_the_root_partition">handbook</a>
-            </p>
-            <div class="cmd-box">
-                <div>
-                    <span>#</span>
-                    <code>mount /dev/sdX3 /mnt/gentoo</code>
-                </div>
-            </div>
-            <p>You can, of course, change the mountpoint to whatever you're like. I'm only doing this for:</p>
-            <ul>
-                <li>Consistency's sake</li>
-                <li>Easier to copy commands from the handbook</li>
-            </ul>
-            <p>Now I'll create the subvolumes for the btrfs drive.</p>
-            <div class="cmd-box">
-                <div>
-                    <span>#</span>
-                    <code>btrfs su cr /mnt/gentoo/@</code>
-                </div>
-                <div>
-                    <span>#</span>
-                    <code>btrfs su cr /mnt/gentoo/@home</code>
-                </div>
-                <div>
-                    <span>#</span>
-                    <code>btrfs su cr /mnt/gentoo/@.snapshots</code>
-                </div>
-            </div>
-            <p>The only things left are unmounting the drive, and then mounting on the appropriate subvolumes.</p>
-            <div class="cmd-box">
-                <div>
-                    <span>#</span>
-                    <code>umount /mnt/gentoo</code>
-                </div>
-                <div>
-                    <span>#</span>
-                    <code>mount -o subvol=@ /dev/sdX3 /mnt/gentoo</code>
-                </div>
-                <div>
-                    <span>#</span>
-                    <code>mkdir /mnt/gentoo/{home,efi,.snapshots}</code>
-                </div>
-                <div>
-                    <span>#</span>
-                    <code>mount -o compress=zstd,subvol=@home /dev/sdX3 /mnt/gentoo/home</code>
-                </div>
-                <div>
-                    <span>#</span>
-                    <code>mount -o compress=zstd,subvol=@.snapshots /dev/sdX3 /mnt/gentoo/.snapshots</code>
-                </div>
-                <div>
-                    <span>#</span>
-                    <code>mount /dev/sdX1 /mnt/gentoo/efi</code>
-                </div>
-            </div>
-            <h2 id="stage3">Chapter Two: Stage3 and Chrooting.</h2>
-            <p>Since we're done with partitioning, the "hardest" part is over. I guess. All of them are easy, though.</p>
-            <div class="cmd-box">
-                <div>
-                    <span>#</span>
-                    <code>cd /mnt/gentoo</code>
-                </div>
-                <div>
-                    <span>#</span>
-                    <code>wget https://bouncer.gentoo.org/fetch/root/all/releases/amd64/autobuilds/20221114T111652Z/stage3-amd64-desktop-systemd-20221114T111652Z.tar.xz</code>
+                <p>The only things left are unmounting the drive, and then mounting on the appropriate subvolumes.</p>
+                <div class="cmd-box">
+                    <div>
+                        <span>#</span>
+                        <code>umount /mnt/gentoo</code>
+                    </div>
+                    <div>
+                        <span>#</span>
+                        <code>mount -o subvol=@ /dev/sdX3 /mnt/gentoo</code>
+                    </div>
+                    <div>
+                        <span>#</span>
+                        <code>mkdir /mnt/gentoo/{home,efi,.snapshots}</code>
+                    </div>
+                    <div>
+                        <span>#</span>
+                        <code>mount -o compress=zstd,subvol=@home /dev/sdX3 /mnt/gentoo/home</code>
+                    </div>
+                    <div>
+                        <span>#</span>
+                        <code>mount -o compress=zstd,subvol=@.snapshots /dev/sdX3 /mnt/gentoo/.snapshots</code>
+                    </div>
+                    <div>
+                        <span>#</span>
+                        <code>mount /dev/sdX1 /mnt/gentoo/efi</code>
+                    </div>
                 </div>
             </div>
-            <p>Note that as of writing this, there wasn't a desktop merged-usr systemd stage3 available for download so we're going to do this manually.</p>
-            <p>If you want to know what a stage3 is, refer to Gentoo's wiki.</p>
-            <p>The link for the tarball will change. You are to go to the <a href="https://www.gentoo.org/downloads/#other-arches">download section</a> on Gentoo's website and grab the latest one.</p>
-            <div class="cmd-box">
-                <span>#</span>
-                <code>tar xpvf stage3-*.tar.xz --xattrs-include='*.*' --numeric-owner</code>
-            </div>
-            <p>After this process, congratulations, you have a somewhat <em>very</em> minimal Gentoo install.</p>
-            <p>You are know advised to change some default compiler options on /etc/portage/make.conf</p>
-            <div class="cmd-box">
-                <span>#</span>
-                <code>vi /mnt/gentoo/etc/portage/make.conf</code>
-            </div>
-            <p>I would add something like this, probably:</p>
-            <div class="cmd-box">
-                <p>COMMON_FLAGS="-march=native -O2 -pipe"</p>
-                <p>CFLAGS="${COMMON_FLAGS}"</p>
-                <p>CXXFLAGS="${COMMON_FLAGS}"</p>
-                <p>FCFLAGS="${COMMON_FLAGS}"</p>
-                <p>FFLAGS="${COMMON_FLAGS}"</p>
-                <p>MAKEOPTS="-j2"</p>
-                <p>ACCEPT_LICENSE="*"</p>
-                <p>GRUB_PLATFORMS="efi-64"</p>
-                <p>EMERGE_DEFAULT_OPTS="--with-bdeps y --complete-graph y --fail-clean y --quiet-build --keep-going"</p>
-                <p>CPU_FLAGS_X86="aes avx avx2 f16c fma3 mmx mmxext pclmul popcnt rdrand sse sse2 sse3 sse4_1 sse4_2 ssse3"</p>
-                <p>USE="zstd pulseaudio pipewire screencast"</p>
-            </div>
-            <p>Ok, this is a lot to take in. Most of these settings are already set. So you don't have to worry about them.</p>
-            <p>CPU_FLAGS_X86 is something you have to add according to <a href="https://wiki.gentoo.org/wiki/CPU_FLAGS_X86#Using_cpuid2cpuflags">this</a>.</p>
-            <p>Set MAKEOPTS for now to the result of the command nproc, e.g -j8</p>
-            <p>The rest are easily googable. Good luck.</p>
-            <div class="cmd-box">
-                <div>
-                    <span>#</span>
-                    <code>mkdir -p /mnt/gentoo/etc/portage/repos.conf</code>
+            <div id="stage3">
+                <h2 class="title">Chapter Two: Stage3 and Chrooting.</h2>
+                <p>Since we're done with partitioning, the "hardest" part is over. I guess. All of them are easy, though.</p>
+                <div class="cmd-box">
+                    <div>
+                        <span>#</span>
+                        <code>cd /mnt/gentoo</code>
+                    </div>
+                    <div>
+                        <span>#</span>
+                        <code>wget https://bouncer.gentoo.org/fetch/root/all/releases/amd64/autobuilds/20221114T111652Z/stage3-amd64-desktop-systemd-20221114T111652Z.tar.xz</code>
+                    </div>
                 </div>
-                <div>
+                <p>Note that as of writing this, there wasn't a desktop merged-usr systemd stage3 available for download so we're going to do this manually.</p>
+                <p>The link for the tarball will change. You should go to the <a href="https://www.gentoo.org/downloads/#other-arches">download section</a> on Gentoo's website and grab the latest desktop systemd stage3.</p>
+                <p>If you want to know what a stage3 is, refer to Gentoo's wiki.</p>
+                <div class="cmd-box">
                     <span>#</span>
-                    <code>cp /mnt/gentoo/usr/share/portage/config/repos.conf /mnt/gentoo/etc/portage/repos.conf/gentoo.conf</code>
+                    <code>tar xpvf stage3-*.tar.xz --xattrs-include='*.*' --numeric-owner</code>
                 </div>
-                <div>
+                <p>After this process, congratulations, you have a somewhat <em>very</em> minimal Gentoo install.</p>
+                <p>You are know advised to change some default compiler options on /etc/portage/make.conf</p>
+                <div class="cmd-box">
                     <span>#</span>
-                    <code>cp --dereference /etc/resolv.conf /mnt/gentoo/etc</code>
+                    <code>vi /mnt/gentoo/etc/portage/make.conf</code>
                 </div>
+                <p>I would add something like this, probably:</p>
+                <div class="cmd-box">
+                    <p>COMMON_FLAGS="-march=native -O2 -pipe"</p>
+                    <p>CFLAGS="${COMMON_FLAGS}"</p>
+                    <p>CXXFLAGS="${COMMON_FLAGS}"</p>
+                    <p>FCFLAGS="${COMMON_FLAGS}"</p>
+                    <p>FFLAGS="${COMMON_FLAGS}"</p>
+                    <p>MAKEOPTS="-j2"</p>
+                    <p>ACCEPT_LICENSE="*"</p>
+                    <p>GRUB_PLATFORMS="efi-64"</p>
+                    <p>EMERGE_DEFAULT_OPTS="--with-bdeps y --complete-graph y --fail-clean y --quiet-build --keep-going"</p>
+                    <p>CPU_FLAGS_X86="aes avx avx2 f16c fma3 mmx mmxext pclmul popcnt rdrand sse sse2 sse3 sse4_1 sse4_2 ssse3"</p>
+                    <p>USE="zstd pulseaudio pipewire screencast"</p>
+                </div>
+                <p>Ok, this is a lot to take in. Most of these settings are already set. So you don't have to worry about them.</p>
+                <p>CPU_FLAGS_X86 is something you have to add according to <a href="https://wiki.gentoo.org/wiki/CPU_FLAGS_X86#Using_cpuid2cpuflags">this</a>.</p>
+                <p>Set MAKEOPTS for now to the result of the command nproc, e.g -j8</p>
+                <p>The rest are easily googable. Good luck.</p>
+                <div class="cmd-box">
+                    <div>
+                        <span>#</span>
+                        <code>mkdir -p /mnt/gentoo/etc/portage/repos.conf</code>
+                    </div>
+                    <div>
+                        <span>#</span>
+                        <code>cp /mnt/gentoo/usr/share/portage/config/repos.conf /mnt/gentoo/etc/portage/repos.conf/gentoo.conf</code>
+                    </div>
+                    <div>
+                        <span>#</span>
+                        <code>cp --dereference /etc/resolv.conf /mnt/gentoo/etc</code>
+                    </div>
+                </div>
+                <p>Above we're creating the location where Portage will look for the gentoo repository configuration file, copying the default, and getting our dns resolvers from the liveiso (or whatever media you're using to install it).</p>
+                <div class="cmd-box">
+                    <div>
+                        <span>#</span>
+                        <code>mount --types proc /proc /mnt/gentoo/proc && mount --rbind /sys /mnt/gentoo/sys && mount --make-rslave /mnt/gentoo/sys && mount --rbind /dev /mnt/gentoo/dev && mount --make-rslave /mnt/gentoo/dev && mount --bind /run /mnt/gentoo/run && mount --make-slave /mnt/gentoo/run</code>
+                    </div>
+                    <div>
+                        <span>#</span>
+                        <code>chroot /mnt/gentoo /bin/bash --login</code>
+                    </div>
+                </div>
+                <p>We're finally chrooted! Wasn't that hard.. was it?</p>
             </div>
-            <p>Above we're creating the location where Portage will look for the gentoo repository configuration file, copying the default, and getting our dns resolvers from the liveiso (or whatever media you're using to install it).</p>
-            <div class="cmd-box">
-                <div>
-                    <span>#</span>
-                    <code>mount --types proc /proc /mnt/gentoo/proc && mount --rbind /sys /mnt/gentoo/sys && mount --make-rslave /mnt/gentoo/sys && mount --rbind /dev /mnt/gentoo/dev && mount --make-rslave /mnt/gentoo/dev && mount --bind /run /mnt/gentoo/run && mount --make-slave /mnt/gentoo/run</code>
-                </div>
-                <div>
-                    <span>#</span>
-                    <code>chroot /mnt/gentoo /bin/bash --login</code>
-                </div>
-            </div>
-            <p>We're finally chrooted! Wasn't that hard.. was it?</p>
         </div>
     </body>
 </html>
