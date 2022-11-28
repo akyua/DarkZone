@@ -48,14 +48,14 @@
 }
 
 .header_content:hover{
-    color: rgb(146, 141, 146);
+    color: rgb(200, 62, 255);
     transition: 300ms linear;
 }
 
 .header_content::after{
     content: "";
     display: block;
-    border-bottom: 2px solid rgb(146, 141, 146);
+    border-bottom: 2px solid #ab00df;;
     margin-top: 5px;
     transform: scaleX(0);
     transition: transform 0.3s ease;
