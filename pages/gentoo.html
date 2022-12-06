@@ -151,12 +151,12 @@
                     <p>CXXFLAGS="${COMMON_FLAGS}"</p>
                     <p>FCFLAGS="${COMMON_FLAGS}"</p>
                     <p>FFLAGS="${COMMON_FLAGS}"</p>
-                    <p>MAKEOPTS="-j2"</p>
+                    <p>MAKEOPTS="-j8"</p>
                     <p>ACCEPT_LICENSE="*"</p>
                     <p>GRUB_PLATFORMS="efi-64"</p>
                     <p>EMERGE_DEFAULT_OPTS="--with-bdeps y --complete-graph y --fail-clean y --quiet-build --keep-going"</p>
                     <p>CPU_FLAGS_X86="aes avx avx2 f16c fma3 mmx mmxext pclmul popcnt rdrand sse sse2 sse3 sse4_1 sse4_2 ssse3"</p>
-                    <p>USE="zstd pulseaudio pipewire screencast"</p>
+                    <p>USE="zstd"</p>
                 </div>
                 <p>Ok, this is a lot to take in. Most of these settings are already set. So you don't have to worry about them.</p>
                 <p>CPU_FLAGS_X86 is something you have to add according to <a href="https://wiki.gentoo.org/wiki/CPU_FLAGS_X86#Using_cpuid2cpuflags">this</a>.</p>
@@ -188,6 +188,54 @@
                     </div>
                 </div>
                 <p>We're finally chrooted! Wasn't that hard.. was it?</p>
+            </div>
+            <div id="enviroment">
+                <h2 class="title">Chapter Three: Setting up the install</h2>
+                <p>Now we're going to be setting up basic systemd things and portage stuff.</p>
+                <div class="cmd-box">
+                    <span>#</span>
+                    <code>emerge-webrsync</code>
+                </div>
+                <p>
+                    This will sync the repositories with the latest snapshot of the repositories, it is recommended for some use cases, for general use, it is better to use something like <strong><code>eix-sync</code></strong> tool from the <strong>eix</strong> package.
+                </p>
+                <p>
+                    For this part of the install, we will use <strong><code>emerge-webrsync</code></strong> because that's what recommended.
+                </p>
+                <p>Now we will be emerging the script that will manually merge our /bin and stuff to /usr/bin to remove all that / bloat :P</p>
+                <div class="cmd-box">
+                    <div>
+                        <span>#</span>
+                        <code>ACCEPT_KEYWORDS="~amd64" emerge -1 merge-usr</code>
+                    </div>
+                    <div>
+                        <span>#</span>
+                        <code>merge-usr</code>
+                    </div>
+                    <div>
+                        <span>#</span>
+                        <code>eselect profile set 13</code>
+                    </div>
+                </div>
+                <p>
+                    Right here I'm emerging the script, then running it, then selecting the 13th profile. For the sake of continuity, while the number may change, the name won't, so you should run <strong><code>eselect profile list</code></strong> and select the one which is called <strong>default/linux/amd64/17.1/desktop/systemd/merged-usr</strong>.
+                </p>
+                <p>Don't worry about running a world update right now, for the sake of doing the quickest usable install possible, we won't be doing the world update right away.</p>
+                <p>It is also maybe good practice to not actually run it right now, since if the install fails after you spent hours updating world set... I wouldn't want to redo it, to say the least.</p>
+                <div class="cmd-box">
+                    <div>
+                        <span>#</span>
+                        <code>ln -sf /usr/share/zoneinfo/Europe/Brussels /etc/localtime</code>
+                    </div>
+                    <div>
+                        <span>#</span>
+                        <code>nano /etc/locale.gen</code>
+                    </div>
+                    <div>
+                        <span>#</span>
+                        <code>locale-gen</code>
+                    </div>
+                </div>
             </div>
         </div>
     </body>
