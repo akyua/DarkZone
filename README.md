@@ -1,7 +1,7 @@
 <h1 align="center">DarkZone Blog</h1>
 
-<p align="center"> The Project is a website, which it has the purporse is create tutorials/infos in different areas, as gentoo, html, css, js </p>
-<p align="center"> It's not responsive website yet, but this will be done </p>
+<p align="center"> This is a website which its purpose is to be a blog with tutorials and information on various areas such as Web Development, Linux, etc. </p>
+<p align="center"> It's not responsive yet, but it'll be in the upcoming future. </p>
 
 <br>
 
@@ -10,7 +10,7 @@
 
 <br>
 
-<h2 align="center"> See website on live </h2>
+<h2 align="center"> See website live on </h2>
 <p align="center"> http://dark-zone.tk || http://darkzoneblog.tk </p>
 
 <br>
@@ -22,7 +22,7 @@
 
 <br>
 
-<h2 align="center"> Picture of the website is now </h2>
+<h2 align="center"> Picture of how the website is at the moment </h2>
 
 <div align="center">
 
