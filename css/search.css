@@ -2,7 +2,7 @@
     display: flex;
     justify-content: center;
     align-items: center;
-    padding-top: 100px;
+    padding-top: 60px;
 }
 
 .search_text{
@@ -16,8 +16,6 @@
 .adjust{
     width: 1080px;
     height: 70px;
-    position: fixed;
-    margin-top: 100px;
     background-color: rgba(49, 49, 49, 0.548);
     border: 1px solid rgb(80, 80, 80);
     border-radius: 20px;

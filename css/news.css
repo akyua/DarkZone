@@ -1,0 +1,19 @@
+.news{
+    display: flex;
+    justify-content: center;
+    text-align: center;
+    padding-top: 60px;
+}
+
+.news_adjust{
+    width: 1080px;
+    height: 600px;
+    background-color: rgba(49, 49, 49, 0.548);
+    border: 1px solid rgb(80, 80, 80);
+    border-radius: 20px;
+}
+
+.news_text{
+    color: rgba(255, 255, 255, 0.671);
+    font-size: 30px;
+}

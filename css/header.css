@@ -26,7 +26,6 @@
     top: 0;
     background: rgba(153, 153, 153, 0.11);
     backdrop-filter: blur(10px);
-    position: fixed ;
 }
 
 .central{
