@@ -1,32 +1,33 @@
 * {
-    font-size: 16px;
-    font-family: Verdana, Geneva, Tahoma, sans-serif;
+  font-family: Georgia, "Times New Roman", Times, serif;
+  background-color: #1a1a1a;
+  color: rgb(255, 255, 255);
 }
 
 .disclaimer {
-    font-weight: 500;
-    font-size: 13px;
-    text-align: center;
+  font-weight: 500;
+  font-size: 13px;
+  text-align: center;
 }
 
 .cmd-box {
-    color: black;
-    border-radius: 4px;
-    padding: 1em;
-    margin-bottom: 10px;
-    overflow: auto;
-    border: solid 1px gray;
+  color: black;
+  border-radius: 4px;
+  padding: 1em;
+  margin-bottom: 10px;
+  overflow: auto;
+  border: solid 1px gray;
 }
 
 .container {
-    padding-right: 15px;
-    padding-left: 15px;
-    margin-right: auto;
-    margin-left: auto;
-    box-sizing: border-box;
-    width: 1170px;
+  padding-right: 15px;
+  padding-left: 15px;
+  margin-right: auto;
+  margin-left: auto;
+  box-sizing: border-box;
+  width: 1170px;
 }
 
 .title {
-    border-bottom: solid 1px black;
+  border-bottom: solid 1px rgb(255, 255, 255);
 }
