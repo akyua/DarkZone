@@ -1,11 +1,11 @@
-#homepage {
+#search {
     display: flex;
     justify-content: center;
     align-items: center;
     padding-top: 100px;
 }
 
-.search{
+.search_text{
     color: rgba(255, 255, 255, 0.671);
     font-family: Georgia, 'Times New Roman', Times, serif;
     font-size: 18px;
