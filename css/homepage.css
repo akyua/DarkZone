@@ -29,7 +29,7 @@
     color: white;
     border: none;
     margin-left: 20px;
-    width: 700px;
+    width: 740px;
 }
 
 .search_field:focus{
@@ -39,7 +39,7 @@
 
 .search_submit{
     font-size: 18px;
-    margin-left: 30px;
+    margin-left: 20px;
     padding: 10px;
     color: white;
     background-color: rgb(146, 3, 151);
