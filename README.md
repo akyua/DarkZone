@@ -1,7 +1,7 @@
 <h1 align="center">DarkZone Blog</h1>
 
 <p align="center"> This is a website which its purpose is to be a blog with tutorials and information on various areas such as Web Development, Linux, etc. </p>
-<p align="center"> IIt's not responsive yet, but it'll be in the upcoming future. </p>
+<p align="center"> It's not responsive yet, but it'll be in the upcoming future. </p>
 
 <br>
 
