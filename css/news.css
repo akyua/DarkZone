@@ -17,3 +17,35 @@
     color: rgba(255, 255, 255, 0.671);
     font-size: 30px;
 }
+
+.news_image{
+    border-radius: 20px;
+    background-color: rgba(49, 49, 49, 0.548);
+    border: 1px solid rgb(80, 80, 80);
+    padding: 10px 40px;
+    display: flex;
+    margin: 20px 100px;
+}
+
+.news_image_post:hover{
+    transition: 
+}
+
+.news_image_post{
+    width: 100px;
+    height: 100px;
+}
+
+
+.news_title_post{
+    color: rgba(255, 255, 255, 0.671);
+    font-size: 20px;
+    text-align: left;
+    padding-left: 40px;
+}
+
+.news_text_post{
+    color: rgba(255, 255, 255, 0.671);
+    text-align: left;
+    padding-left: 40px;
+}
