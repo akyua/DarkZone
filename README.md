@@ -26,6 +26,6 @@
 
 <div align="center">
 
-![n1](https://user-images.githubusercontent.com/75745796/206809785-b550623a-7e68-4926-9ddb-2d426ebe38bd.png)
+![a1](https://user-images.githubusercontent.com/75745796/206813092-9d8ffa6a-a2ce-4962-8269-6571024d4c94.png)
 
 </div>
