@@ -38,8 +38,8 @@
 
 
 .news_title_post{
-    color: rgba(255, 255, 255, 0.671);
-    font-size: 20px;
+    color: rgba(255, 255, 255, 0.911);
+    font-size: 25px;
     text-align: left;
     padding-left: 40px;
 }
@@ -48,4 +48,12 @@
     color: rgba(255, 255, 255, 0.671);
     text-align: left;
     padding-left: 40px;
+    padding-bottom: 5px;
+}
+
+.news_autor_post{
+    color: rgba(255, 255, 255, 0.671);
+    text-align: left;
+    padding-left: 40px;
+    font-size: 12px;
 }
