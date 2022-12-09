@@ -32,6 +32,7 @@
 }
 
 .news_image_post{
+    margin-top: 10px;
     width: 100px;
     height: 100px;
 }
@@ -56,4 +57,8 @@
     text-align: left;
     padding-left: 40px;
     font-size: 12px;
+}
+
+.news_image_link{
+    text-decoration: none;
 }
