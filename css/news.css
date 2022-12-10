@@ -7,7 +7,7 @@
 
 .news_adjust{
     width: 1080px;
-    height: 600px;
+    height: auto;
     background-color: rgba(49, 49, 49, 0.548);
     border: 1px solid rgb(80, 80, 80);
     border-radius: 20px;
