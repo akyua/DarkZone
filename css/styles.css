@@ -3,9 +3,12 @@
     padding: 0;
     box-sizing: border-box !important;
   }
+
   
   html, body {
     height: 100%;
+    overflow:auto;
+    height:100%
   }
   
   body {
