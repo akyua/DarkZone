@@ -15,8 +15,12 @@
 }
 
 .news_text{
-    color: rgba(255, 255, 255, 0.671);
-    font-size: 30px;
+    margin-top: 5px;
+    color: white;
+    font-size: 28px;
+    text-transform: uppercase;
+    letter-spacing: 3px;
+    margin-left: 9px;
 }
 
 .news_image{

@@ -54,7 +54,7 @@
 .header_content::after{
     content: "";
     display: block;
-    border-bottom: 2px solid #ab00df;;
+    border-bottom: 2px solid #ab00df;
     margin-top: 5px;
     transform: scaleX(0);
     transition: transform 0.3s ease;
