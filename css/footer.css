@@ -9,12 +9,13 @@ footer{
 }
 
 .footer_developers{
-    padding: 15px 0;
+    padding-top: 15px;
+    padding-bottom: 5px;
 }
 
-.footer_text{
+.footer_text, .copyright{
     color: rgba(255, 255, 255, 0.671);
-    font-size: 20px;
+    font-size: 18px;
 }
 
 .footer_link{
