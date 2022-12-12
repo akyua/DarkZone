@@ -30,6 +30,7 @@
     padding: 10px 40px;
     display: flex;
     margin: 20px 100px;
+    transition: 0.3s linear;
 }
 
 .news_image_post:hover{
@@ -50,6 +51,11 @@
     padding-left: 40px;
 }
 
+.news_image_link:hover{
+    transition: 300ms linear;
+    color: rgb(200, 62, 255);
+}
+
 .news_text_post{
     color: rgba(255, 255, 255, 0.671);
     text-align: left;
@@ -68,4 +74,9 @@
 .news_image_link{
     text-decoration: none;
     color: rgba(255, 255, 255, 0.911);
+}
+
+.news_image:hover{
+    scale: 1.05;
+    cursor: pointer;
 }
