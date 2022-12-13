@@ -32,9 +32,10 @@
     margin: 20px 100px;
     transition: 0.3s linear;
 }
-
-.news_image_post:hover{
-    transition: 
+.news_image_link_all
+{
+    width: 920px;
+    height: 144px;
 }
 
 .news_image_post{
@@ -79,4 +80,11 @@
 .news_image:hover{
     scale: 1.05;
     cursor: pointer;
+}
+
+#news_div_link{
+    display: block;
+    height: 100%;
+    width: 100%;
+    text-decoration: none;
 }
