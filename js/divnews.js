@@ -1,8 +1,8 @@
 let lista = [0, 1, 2 , 3]
-lista[0] = document.getElementById('news_image')
-lista[1] = document.getElementById('news_image1')
-lista[2] = document.getElementById('news_image2')
-lista[3] = document.getElementById('news_image3')
+lista[0] = document.getElementById('gentoo')
+lista[1] = document.getElementById('html')
+lista[2] = document.getElementById('arch')
+lista[3] = document.getElementById('css')
 
 lista[0].addEventListener('click', () => {
     let gentoo = './pages/gentoo.html'
