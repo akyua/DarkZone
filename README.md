@@ -19,6 +19,7 @@
 
 <p align="center"> HTML </p>
 <p align="center"> CSS </p>
+<p align="center"> Javascript </p>
 
 <br>
 
