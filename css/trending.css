@@ -65,3 +65,23 @@ hr{
     text-align: center;
     margin: 5px 0;
 }
+
+@media screen and (max-width: 1440px) {
+    .trending_adjust{
+        width: 800px;
+    }
+
+    .trending_box{
+        grid-template-columns: 1fr;
+    }
+
+    .trending_thumb{
+        width: 650px;
+    margin-right: 80px;
+    margin-left: 80px;
+    }
+
+    hr{
+        max-width: 676px;
+    }
+}
