@@ -88,3 +88,23 @@
     width: 100%;
     text-decoration: none;
 }
+
+@media screen and (max-width: 1440px) {
+    .news_adjust{
+        width: 800px;
+    }
+
+    .news_image{
+        width: 650px;
+        margin-right: 80px;
+        margin-left: 80px;
+    }
+
+    .news_text_post{
+        height: 80px;
+    }
+
+    .news_image_link{
+        margin-top: 10px;
+    }
+}

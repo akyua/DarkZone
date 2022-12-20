@@ -65,3 +65,13 @@
 }
 /* conteudo barra */
 
+
+@media screen and (max-width: 1440px) {
+    .central{
+        max-width: 800px;
+    }
+
+    .logo{
+        width: 480px;
+    }
+}
