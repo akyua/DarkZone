@@ -31,6 +31,11 @@
     transition: 0.3s linear;
 }
 
+.trending_thumb:hover{
+    transform: scale(1.04);
+    cursor: pointer;
+}
+
 .trending_box{
     display: grid;
     grid-template-columns: 1fr 1fr;
