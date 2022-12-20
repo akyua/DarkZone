@@ -10,6 +10,7 @@
       <link rel="stylesheet" href="./css/styles.css">
       <link rel="stylesheet" href="./css/search.css">
       <link rel="stylesheet" href="./css/news.css">
+      <link rel="stylesheet" href="./css/trending.css">
       <link rel="stylesheet" href="./css/footer.css">
   </head>
   <body>
@@ -25,7 +26,7 @@
                       <li><a href="#home" class="header_content">Home</a></li>
                       <li><a href="#about" class="header_content">About</a></li>
                       <li><a href="#contact" class="header_content">Contact</a></li>
-                      <li><a href="./pages/gentoo.html" class="header_content">Trending</a></li>
+                      <li><a href="#trending" class="header_content">Trending</a></li>
                   </ul>
               </nav>
           </div>
@@ -97,7 +98,29 @@
                     </div>
                 </article>
             </div>
-        </section> 
+        </section>
+        <section class="trending" id="trending">
+            <div class="trending_adjust">
+                <h2 class="trending_title">Trending</h2>
+                <article class="trending_box">
+                    <nav class="trending_thumb" id="gentoo">
+                        <a href="">
+                            <img src="assets/images/thumb.png" class="trending_image">
+                        </a>
+                        <h2><a href="" class="trending_tile_link">Configuration Gentoo</a></h2>
+                    </nav>
+                    <nav class="trending_thumb" id="gentoo">
+                        <a href="">
+                            <img src="assets/images/thumbjs.jpg" class="trending_image">
+                        </a>
+                        <h2><a href="" class="trending_tile_link">Javascript Functions</a></h2>
+                        <div class="trending_description">
+                            <p class="trending_text"></p>
+                        </div>
+                    </nav>
+                </article>
+            </div>
+        </section>
         <script src="js/divnews.js"></script> 
       </main>
       <footer class="footer">
