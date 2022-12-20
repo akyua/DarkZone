@@ -46,3 +46,17 @@
     color: rgba(255, 255, 255, 0.911);
     font-size: 25px;
 }
+
+.trending_text{
+    color: rgba(255, 255, 255, 0.671);
+}
+
+.trending_text_autor{
+    font-size: 14px;
+}
+
+hr{
+    max-width: 416px;
+    text-align: center;
+    margin: 5px 0;
+}
