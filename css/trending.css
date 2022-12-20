@@ -13,7 +13,7 @@
     border-radius: 20px;
 }
 
-.trending_text{
+.trending_title{
     margin-top: 5px;
     color: white;
     font-size: 28px;
@@ -41,7 +41,8 @@
     max-height: 220px;
 }
 
-.trending_title{
+.trending_tile_link{
+    text-decoration: none;
     color: rgba(255, 255, 255, 0.911);
     font-size: 25px;
 }
