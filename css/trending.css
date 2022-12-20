@@ -1,0 +1,47 @@
+.trending{
+    display: flex;
+    justify-content: center;
+    text-align: center;
+    padding-bottom: 60px;
+}
+
+.trending_adjust{
+    width: 1080px;
+    height: auto;
+    background-color: rgba(49, 49, 49, 0.548);
+    border: 1px solid rgb(80, 80, 80);
+    border-radius: 20px;
+}
+
+.trending_text{
+    margin-top: 5px;
+    color: white;
+    font-size: 28px;
+    text-transform: uppercase;
+    letter-spacing: 3px;
+    margin-left: 9px;
+}
+
+.trending_thumb{
+    border-radius: 20px;
+    background-color: rgba(49, 49, 49, 0.548);
+    border: 1px solid rgb(80, 80, 80);
+    padding: 20px 40px;
+    margin: 20px;
+    transition: 0.3s linear;
+}
+
+.trending_box{
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+}
+
+.trending_image{
+    max-width: 400px;
+    max-height: 220px;
+}
+
+.trending_title{
+    color: rgba(255, 255, 255, 0.911);
+    font-size: 25px;
+}
