@@ -7,17 +7,27 @@
   font-size: 28px;
   font-weight: bold;
   border-bottom: solid 1px rgb(255, 255, 255);
+  margin-bottom: 10px;
 }
 
 .title_main{
   text-align: center;
+  font-size: 32px;
+  padding-bottom: 5px;
+}
+
+#title{
+  margin-bottom: 20px;
 }
 
 .disclaimer {
   padding: 10px 0;
-  font-weight: 500;
-  font-size: 13px;
+  font-size: 20px;
   text-align: center;
+}
+
+.introduction, #partitioning, #stage3, #enviroment{
+  margin-bottom: 20px;
 }
 
 .cmd-box {
