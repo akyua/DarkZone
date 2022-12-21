@@ -4,10 +4,13 @@
 }
 
 .title {
-  padding-top: 10px;
   font-size: 28px;
   font-weight: bold;
   border-bottom: solid 1px rgb(255, 255, 255);
+}
+
+.title_main{
+  text-align: center;
 }
 
 .disclaimer {
