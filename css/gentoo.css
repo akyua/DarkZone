@@ -1,10 +1,15 @@
 * {
   font-family: Georgia, "Times New Roman", Times, serif;
-  background-color: #1a1a1a;
   color: rgb(255, 255, 255);
 }
 
+.title {
+  padding-top: 10px;
+  border-bottom: solid 1px rgb(255, 255, 255);
+}
+
 .disclaimer {
+  padding: 10px 0;
   font-weight: 500;
   font-size: 13px;
   text-align: center;
@@ -28,6 +33,3 @@
   width: 1170px;
 }
 
-.title {
-  border-bottom: solid 1px rgb(255, 255, 255);
-}
