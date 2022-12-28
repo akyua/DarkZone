@@ -11,8 +11,9 @@
 }
 
 .title_main{
+  font-family:'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
   text-align: center;
-  font-size: 32px;
+  font-size: 38px;
   padding-bottom: 5px;
 }
 
