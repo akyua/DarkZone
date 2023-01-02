@@ -49,3 +49,9 @@
   width: 1170px;
 }
 
+@media screen and (max-width: 1440px) {
+  .container{
+    margin: 0 60px;
+    width: auto;
+  }
+}
