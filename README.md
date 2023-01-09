@@ -12,6 +12,7 @@
 
 <h2 align="center"> See website live on </h2>
 <p align="center"> http://dark-zone.tk || http://darkzoneblog.tk </p>
+<p align="center"> In the case website to be off:  https://akyua.github.io/DarkZone/ </p>
 
 <br>
 
