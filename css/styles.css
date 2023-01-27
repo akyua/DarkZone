@@ -19,7 +19,7 @@
     color: #000;
     line-height: 1.6;
     position: relative;
-    font-family: sans-serif;
+    font-family: var(--font-text);
     overflow: hidden;
   }
   

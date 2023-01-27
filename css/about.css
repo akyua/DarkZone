@@ -1,0 +1,15 @@
+.description{
+    display: flex;
+    align-items: center;
+    justify-content: center;  
+    width: 99vw;
+}
+
+.description_adjust{
+    background-color: var(--color-background) ;
+    padding: 100px;
+}
+
+h1{
+    
+}

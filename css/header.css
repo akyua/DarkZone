@@ -1,3 +1,8 @@
+:root{
+    --color-background: rgba(153, 153, 153, 0.11);
+    --font-text: 'poppins';
+  }
+
 /* conteudo geral */
 .header_list{
     list-style: none;
@@ -42,7 +47,7 @@
 /* conteudo barra */
 .header_content{
     color: white;
-    font-family: Georgia;
+    font-family: var(--font-text);
     font-size: 18px;
     text-decoration: none;
 }

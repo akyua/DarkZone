@@ -50,7 +50,7 @@ input{
     width: 257px;
     height: 37px;
     font-size: 20px;
-    font-family: arial;
+    font-family: var(--font-text);
 }
 
 button{
