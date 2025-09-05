@@ -1,0 +1,9 @@
+{
+    "pageTitle": "Meu Blog",
+    "menu": {
+      "home": "Início",
+      "about": "Sobre",
+      "posts": "Postagens"
+    },
+    "welcomeMessage": "Bem-vindo ao meu novo blog feito com Vue.js!"
+  }

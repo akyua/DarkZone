@@ -1,0 +1,9 @@
+{
+    "pageTitle": "My Blog",
+    "menu": {
+      "home": "Home",
+      "about": "About",
+      "posts": "Posts"
+    },
+    "welcomeMessage": "Welcome to my new blog made with Vue.js!"
+  }
