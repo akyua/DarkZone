@@ -6,13 +6,13 @@
     <div class="header-right">
       <nav class="main-nav">
         <ul>
-          <li><RouterLink to="/about">About</RouterLink></li>
-          <li><RouterLink to="/contact">Contact</RouterLink></li>
+          <li><RouterLink to="/about">Sobre</RouterLink></li>
+          <li><RouterLink to="/contact">Contato</RouterLink></li>
         </ul>
       </nav>
 
       <div class="search-filter">
-        <input type="text" placeholder="Search...">
+        <input type="text" placeholder="Pesquisar...">
       </div>
       <ThemeToggle />
     </div>
