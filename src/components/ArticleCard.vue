@@ -1,7 +1,7 @@
 <template>
   <RouterLink :to="to" class="article-card">
     <div class="logo-container">
-      <img v-if="logo" :src="logo" :alt="`logo`" class="logo">
+      <img v-if="logo" :src="getLogoUrl(logo)" alt="Logo" class="article-logo" />
       <svg v-else xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="logo"><path d="M4 19.5v-15A2.5 2.5 0 0 1 6.5 2H20v20H6.5a2.5 2.5 0 0 1 0-5H20"></path></svg>
     </div>
     <div class="content">
@@ -28,13 +28,18 @@ const formattedDate = computed(() => {
   const [year, month, day] = props.date.split('-');
   return `${day}/${month}/${year}`;
 });
+
+function getLogoUrl(logoPath: string) {
+  if (!logoPath) return '';
+  return new URL(logoPath, import.meta.url).href;
+}
 </script>
 
 <style lang="scss" scoped>
 .article-card {
   display: flex;
   align-items: center;
-  gap: 1.5rem;
+  gap: 1.2rem;
   padding: 1rem 1.5rem;
   margin-bottom: 1rem;
   background-color: var(--header-bg-color);
@@ -51,6 +56,9 @@ const formattedDate = computed(() => {
 
 .logo-container {
   flex-shrink: 0;
+  display: flex;
+  align-items: center;
+  height: 60px; // igual ao .article-logo
   .logo {
     width: 32px;
     height: 32px;
@@ -61,13 +69,17 @@ const formattedDate = computed(() => {
 // O container do conteúdo agora é o item flex que cresce
 .content {
   flex-grow: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: center; // centraliza verticalmente
+  min-height: 60px; // igual ao logo
 }
 
 .title {
   color: var(--text-color);
   font-size: 1.1rem;
   font-weight: 600;
-  margin: 0;
+  margin: 0 0 0.2rem 0; // reduz espaço abaixo do título
 }
 
 // Estilo para as novas informações
@@ -75,7 +87,15 @@ const formattedDate = computed(() => {
   font-size: 0.85rem;
   color: var(--text-color);
   opacity: 0.7; // Cor mais suave para dar hierarquia
-  margin: 0.25rem 0 0 0; // Pequeno espaço acima
+  margin: 0; // remove espaço extra
+}
+
+.article-logo {
+  width: 60px;
+  height: 60px;
+  object-fit: cover;
+  border-radius: 8px;
+  display: block;
 }
 
 .dark-theme .article-card:hover {

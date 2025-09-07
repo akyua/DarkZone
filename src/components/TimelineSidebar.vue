@@ -2,21 +2,25 @@
   <aside class="timeline-sidebar">
     <h4>Nesta Página</h4>
     <ul>
-      <li v-for="group in groups" :key="group">
-        <a :href="`#${generateId(group)}`">{{ group }}</a>
+      <li v-for="group in displayGroups" :key="group.id">
+        <a :href="`#${group.id}`">{{ group.text }}</a>
       </li>
     </ul>
   </aside>
 </template>
 
 <script setup lang="ts">
-defineProps<{
-  groups: string[];
+import { computed } from 'vue';
+
+const props = defineProps<{
+  groups: any[];
 }>();
 
-const generateId = (groupName: string) => {
-  return groupName.toLowerCase().replace(/\s+/g, '-');
-};
+const displayGroups = computed(() =>
+  props.groups.map(g =>
+    typeof g === 'string' ? { id: g.toLowerCase().replace(/\s+/g, '-'), text: g } : g
+  )
+);
 </script>
 
 <style lang="scss" scoped>
