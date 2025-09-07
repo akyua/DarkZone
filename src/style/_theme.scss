@@ -1,0 +1,21 @@
+:root {
+  --background-color: #f5f5f5;
+  --text-color: #333;
+  --header-bg-color: #f5f5f5;
+  --header-border-color: #ddd;
+  --input-bg-color: #fff;
+  --input-border-color: #ccc;
+  --link-color: #333;
+  --link-hover-color: #007bff;
+}
+
+.dark-theme {
+  --background-color: #1a1a1a;
+  --text-color: #f5f5f5;
+  --header-bg-color: #242424;
+  --header-border-color: #3a3a3a;
+  --input-bg-color: #333;
+  --input-border-color: #555;
+  --link-color: #f5f5f5;
+  --link-hover-color: #58a6ff;
+}
