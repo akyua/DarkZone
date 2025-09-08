@@ -42,10 +42,12 @@ export default {
 
 .title-link {
   text-decoration: none;
-  h1{
+  h1 {
     margin: 0;
     font-size: 1.5rem;
     color: var(--text-color);
+    user-select: none;
+    pointer-events: none;
   }
 }
 
