@@ -53,7 +53,6 @@ const groupedArticles = computed(() => {
 
   articles.forEach(article => {
   const date = new Date(article.date);
-  console.log('article.date:', article.date);
   if (isNaN(date.getTime())) {
     return;
   }
