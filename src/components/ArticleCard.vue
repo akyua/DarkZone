@@ -18,11 +18,10 @@ const props = defineProps<{
   title: string;
   to: string;
   logo?: string;
-  author: string; // <-- ADICIONADO
-  date: string;   // <-- ADICIONADO
+  author: string;
+  date: string;
 }>();
 
-// Computed property para formatar a data
 const formattedDate = computed(() => {
   if (!props.date) return '';
   const [year, month, day] = props.date.split('-');
@@ -58,7 +57,7 @@ function getLogoUrl(logoPath: string) {
   flex-shrink: 0;
   display: flex;
   align-items: center;
-  height: 60px; // igual ao .article-logo
+  height: 60px;
   .logo {
     width: 32px;
     height: 32px;
@@ -66,28 +65,26 @@ function getLogoUrl(logoPath: string) {
   }
 }
 
-// O container do conteúdo agora é o item flex que cresce
 .content {
   flex-grow: 1;
   display: flex;
   flex-direction: column;
-  justify-content: center; // centraliza verticalmente
-  min-height: 60px; // igual ao logo
+  justify-content: center; 
+  min-height: 60px; 
 }
 
 .title {
   color: var(--text-color);
   font-size: 1.1rem;
   font-weight: 600;
-  margin: 0 0 0.2rem 0; // reduz espaço abaixo do título
+  margin: 0 0 0.2rem 0;
 }
 
-// Estilo para as novas informações
 .meta-info {
   font-size: 0.85rem;
   color: var(--text-color);
-  opacity: 0.7; // Cor mais suave para dar hierarquia
-  margin: 0; // remove espaço extra
+  opacity: 0.7;
+  margin: 0; 
 }
 
 .article-logo {

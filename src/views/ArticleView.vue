@@ -51,7 +51,6 @@ function formatDate(dateStr: string) {
   return date.toLocaleDateString('pt-BR');
 }
 
-// Extrai os títulos após o conteúdo ser renderizado
 onMounted(async () => {
   await nextTick();
   if (contentRef.value) {
