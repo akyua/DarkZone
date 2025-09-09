@@ -11,9 +11,6 @@ export default defineConfig({
       include: [/\.vue$/, /\.md$/], 
     }),
     Markdown({
-      shiki: {
-        theme: 'dracula', 
-      },
     }),
   ],
   resolve: {

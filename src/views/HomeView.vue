@@ -24,6 +24,7 @@ import { computed } from 'vue';
 import ArticleCard from '@/components/ArticleCard.vue';
 import TimelineSidebar from '@/components/TimelineSidebar.vue';
 import { articles } from '@/data/articles';
+import type { Article } from '@/data/articles'; 
 
 const generateId = (groupName: string) => {
   return groupName.toLowerCase().replace(/\s+/g, '-');
