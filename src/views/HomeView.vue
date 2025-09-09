@@ -23,26 +23,7 @@
 import { computed } from 'vue';
 import ArticleCard from '@/components/ArticleCard.vue';
 import TimelineSidebar from '@/components/TimelineSidebar.vue';
-
-interface Article {
-  title: string;
-  slug: string;
-  date: string;
-  logo?: string;
-  author: string;
-}
-
-const postModules = import.meta.glob('@/posts/*.md', { eager: true });
-
-const articles: Article[] = Object.values(postModules)
-  .map((module: any) => ({
-    title: module.title,
-    slug: module.slug,
-    date: module.date,
-    logo: module.logo,
-    author: module.author,
-  }))
-  .sort((a, b) => new Date(b.date).getTime() - new Date(a.date).getTime());
+import { articles } from '@/data/articles';
 
 const generateId = (groupName: string) => {
   return groupName.toLowerCase().replace(/\s+/g, '-');

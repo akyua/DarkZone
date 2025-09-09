@@ -1,6 +1,6 @@
 <template>
   <div class="app-layout">
-    <HeaderComponent /> 
+    <HeaderComponent :articles="articles" /> 
     <main class="main-content">
       <RouterView />
     </main>
@@ -12,6 +12,8 @@
 import { RouterLink, RouterView } from 'vue-router'
 import HeaderComponent from '@/components/HeaderComponent.vue'
 import Footer from '@/components/Footer.vue';
+import { articles } from '@/data/articles';
+
 </script>
 
 <style scoped>
