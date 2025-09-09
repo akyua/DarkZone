@@ -31,8 +31,19 @@
         <div v-if="showResults && filteredArticles.length" class="search-results">
           <ul>
             <li v-for="article in filteredArticles" :key="article.slug">
-              <RouterLink :to="`/articles/${article.slug}`" @click="showResults = false">
-                {{ article.title }}
+              <template v-if="article.category">
+                <span class="result-secondary-title">{{ article.category }}</span>
+                <hr class="secondary-title-divider">
+              </template>
+              
+              <RouterLink :to="`/articles/${article.slug}`" @click="showResults = false" class="search-result-link">
+                <div class="result-item">
+                  <span class="result-main-title">{{ article.title }}</span>
+                  <div class="result-meta">
+                    <span class="result-author">{{ article.author }}</span>
+                    <span class="result-date">{{ article.date }}</span>
+                  </div>
+                </div>
               </RouterLink>
             </li>
           </ul>
@@ -56,6 +67,9 @@ const showResults = ref(false);
 interface Article {
   title: string;
   slug: string;
+  author: string;
+  date: string; 
+  category?: string;
 }
 const props = defineProps<{ articles: Article[] }>();
 
@@ -102,7 +116,6 @@ onUnmounted(() => {
   padding: 1rem 2rem;
   background-color: var(--background-color);
   border-bottom: 1px solid var(--header-border-color);
-  //transition: background-color 0.3s ease, border-color 0.3s ease;  talvez de para usar depois, mas teria que sincronizar com as paginas view tbm
 }
 
 .title-link {
@@ -144,8 +157,15 @@ onUnmounted(() => {
   display: inline-block;
 }
 
-.search-filter input {
+.search-input-wrapper {
+  position: relative;
+  display: flex;
+  align-items: center;
+}
+
+.search-input-wrapper input {
   padding: 4px 12px;
+  padding-right: 32px;
   border-radius: 6px;
   border: 1px solid var(--input-border-color);
   background-color: var(--input-bg-color);
@@ -158,58 +178,6 @@ onUnmounted(() => {
     border-color: var(--link-hover-color);
     box-shadow: 0 0 0 2px rgba(0, 123, 255, 0.25);
   }
-}
-
-.search-results {
-  position: absolute;
-  right: 0;
-  top: 100%; 
-  background: var(--search-bg-color);
-  border: 1px solid var(--search-border-color);
-  border-radius: 16px;
-  box-shadow: 0 4px 24px rgba(0,0,0,0.18);
-  width: max-content;
-  width: 400px;
-  z-index: 100;
-  padding: 0.5rem 0;
-  font-size: 1rem;
-  max-height: 60vh;
-  overflow-y: auto;
-  display: flex;
-  flex-direction: column;
-  gap: 0.2rem;
-}
-
-
-.search-results ul {
-  list-style: none;
-  margin: 0;
-  padding: 0 1rem;
-}
-
-.search-results li {
-  margin: 0;
-  padding: 0.7rem 0.5rem;
-  border-radius: 8px;
-  transition: background 0.15s;
-  display: flex;
-  align-items: center;
-}
-
-.search-results li:hover {
-  background: #23272b;
-}
-
-.search-results a {
-  color: #fff;
-  font-weight: 500;
-  text-decoration: none;
-  width: 100%;
-  display: block;
-  font-size: 1.05rem;
-  white-space: nowrap;
-  overflow: hidden;
-  text-overflow: ellipsis;
 }
 
 .clear-search-button {
@@ -230,5 +198,100 @@ onUnmounted(() => {
   &:hover {
     opacity: 1;
   }
+}
+
+.search-results {
+  position: absolute;
+  right: 0;
+  top: 100%;
+  background: var(--search-bg-color);
+  border: 1px solid var(--search-border-color);
+  border-radius: 16px;
+  box-shadow: 0 4px 24px rgba(0,0,0,0.18);
+  width: 400px;
+  z-index: 100;
+  padding: 0.5rem 0;
+  font-size: 1rem;
+  max-height: 60vh;
+  overflow-y: auto;
+  display: flex;
+  flex-direction: column;
+}
+
+.search-results ul {
+  list-style: none;
+  margin: 0;
+  padding: 0 0.5rem;
+}
+
+.search-results li {
+  margin: 0;
+  padding: 0;
+  border-radius: 0;
+  margin-bottom: 0.8rem;
+}
+
+.search-results li:last-child {
+  margin-bottom: 0;
+}
+
+/* Novo seletor para o link clicável */
+.search-result-link {
+  display: block;
+  text-decoration: none;
+  color: var(--text-color);
+  padding: 0.7rem 0.5rem;
+  border-radius: 8px;
+  transition: background 0.15s ease;
+  cursor: pointer;
+}
+
+/* Aplica o hover apenas na área do link */
+.search-result-link:hover {
+  background: var(--search-hover-color);
+}
+
+.result-item {
+  display: flex;
+  flex-direction: column;
+}
+
+.result-secondary-title {
+  display: block; 
+  font-size: 0.8em;
+  font-weight: 500;
+  color: var(--text-color);
+  opacity: 0.8;
+  text-transform: uppercase;
+  margin: 2px 0.5rem; /* Margem lateral */
+  margin-bottom: 0.4rem;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  letter-spacing: 0.05em;
+}
+
+.secondary-title-divider {
+  border: none;
+  border-top: 1px solid var(--search-border-color);
+  width: auto;
+}
+
+.result-main-title {
+  font-weight: 600;
+  font-size: 1.15rem;
+  color: var(--text-color);
+  margin-bottom: 0.4rem;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.result-meta {
+  display: flex;
+  gap: 0.5rem;
+  font-size: 0.85em;
+  color: var(--text-color);
+  opacity: 0.6;
 }
 </style>
