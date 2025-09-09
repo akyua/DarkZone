@@ -2,7 +2,7 @@
 title: 'Meu Post Correto'
 slug: 'meu-post-correto'
 date: '2025-09-07'
-logo: '/src/assets/logos/teste.jpg'
+logo: '/logos/teste.jpg'
 author: 'Gabriel Silveira'
 category: 'qualquer coisa'
 ---

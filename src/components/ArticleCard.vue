@@ -1,7 +1,7 @@
 <template>
   <RouterLink :to="to" class="article-card">
     <div class="logo-container">
-      <img v-if="logo" :src="getLogoUrl(logo)" alt="Logo" class="article-logo" />
+      <img v-if="logo" :src="logo" alt="Logo" class="article-logo" />
       <svg v-else xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="logo"><path d="M4 19.5v-15A2.5 2.5 0 0 1 6.5 2H20v20H6.5a2.5 2.5 0 0 1 0-5H20"></path></svg>
     </div>
     <div class="content">
@@ -27,11 +27,6 @@ const formattedDate = computed(() => {
   const [year, month, day] = props.date.split('-');
   return `${day}/${month}/${year}`;
 });
-
-function getLogoUrl(logoPath: string) {
-  if (!logoPath) return '';
-  return new URL(logoPath, import.meta.url).href;
-}
 </script>
 
 <style lang="scss" scoped>
